@@ -1,0 +1,36 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+const EXPERIENCIE = [
+  {
+    date: "Junio 2022 - Actualidad",
+    title: "Ingeniero de Software",
+    company: "WITI",
+    description:
+      "Diseño e implementación de soluciones de Software para la parte logística de despacho a domicilio de un ecommerce.",
+  },
+  {
+    date: "Febrero 2020 - Mayo 2022",
+    title: "Ingeniero de Software",
+    company: "Bice Vida",
+    description:
+      "Desarrollo de micro servicios tales como envíos de correos electrónicos utilizando templates, procesos de ETL, gestión de solicitudes de servicio, validación para proceso de entrega de créditos hipotecarios, etc.",
+  },
+  {
+    date: "Febrero 2020 - Mayo 2022",
+    title: "Ingeniero de Software",
+    company: "Bice Vida",
+    description:
+      "Desarrollo de una aplicación web para el Registro Nacional del Cáncer. Encargado de desarrollar la lógica para la carga de formularios, seguridad mediante JWT, perfiles y gestión de usuarios, mediante el uso de Java/Spring-boot. También, a cargo de desarrollar el Front-end de la aplicación mediante Angular.",
+  },
+];
+---
+
+<ol class="relative mt-16">
+  {
+    EXPERIENCIE.map((experiencie) => (
+      <li class="">
+        <ExperienceItem {...experiencie} />
+      </li>
+    ))
+  }
+</ol>
