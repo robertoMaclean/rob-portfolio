@@ -2,19 +2,55 @@
 import GitHub from "@/components/icons/GitHub.astro";
 import NextJS from "@/components/icons/NextJS.astro";
 import Tailwind from "@/components/icons/Tailwind.astro";
+import Astr from "@/components/icons/Astro.astro";
+import Css from "@/components/icons/Css.astro";
+import Html from "@/components/icons/Html.astro";
+import React from "@/components/icons/React.astro";
+import Javascript from "@/components/icons/Javascript.astro";
+import Jekyll from "@/components/icons/Jekyll.astro";
 import Link from "@/components/icons/Link.astro";
 import LinkButton from "@/components/LinkButton.astro";
 
 const TAGS = {
   NEXT: {
     name: "Next.js",
-    class: "bg-black text-white",
+    class: "bg-purple-500 text-white",
     icon: NextJS,
   },
   TAILWIND: {
     name: "Tailwind CSS",
-    class: "bg-[#003159] text-white",
+    class: "bg-purple-500 text-white",
     icon: Tailwind,
+  },
+  ASTR: {
+    name: "Astro Framework",
+    class: "bg-purple-500 text-white",
+    icon: Astr,
+  },
+  HTML: {
+    name: "HTML",
+    class: "bg-purple-500 text-white",
+    icon: Html,
+  },
+  CSS: {
+    name: "HTML",
+    class: "bg-purple-500 text-white",
+    icon: Css,
+  },
+  JAVASCRIPT: {
+    name: "Javascript",
+    class: "bg-purple-500 text-white",
+    icon: Javascript,
+  },
+  JEKYLL: {
+    name: "Jekyll",
+    class: "bg-purple-500 text-white",
+    icon: Jekyll,
+  },
+  REACT: {
+    name: "React",
+    class: "bg-purple-500 text-white",
+    icon: React,
   },
 };
 const PROJECTS = [
@@ -25,7 +61,7 @@ const PROJECTS = [
     link: "https://rob-maclean.netlify.app",
     github: "https://github.com/robertoMaclean/rob-mac-web-front",
     image: "/projects/rob-page.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT],
   },
   {
     title: "Currículum de Rob",
@@ -33,7 +69,7 @@ const PROJECTS = [
     link: "https://rob-resume.netlify.app",
     github: "https://github.com/robertoMaclean/resume",
     image: "/projects/rob-resume.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+    tags: [TAGS.ASTR],
   },
   {
     title: "Blog de Rob",
@@ -42,7 +78,7 @@ const PROJECTS = [
     link: "https://rob-blog.netlify.app",
     github: "https://github.com/robertoMaclean/robertoMaclean.github.io",
     image: "/projects/rob-blog.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+    tags: [TAGS.JEKYLL],
   },
   {
     title: "Gif Expert App",
@@ -51,7 +87,7 @@ const PROJECTS = [
     link: "https://gif-fernando-herrera-course.netlify.app",
     github: "https://github.com/robertoMaclean/resume",
     image: "/projects/gif-expert.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+    tags: [TAGS.REACT],
   },
 ];
 ---
