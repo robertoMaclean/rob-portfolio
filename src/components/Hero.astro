@@ -1,9 +1,9 @@
 ---
 const personalImageAlt = "Roberto Mac lean";
-import Badge from "@/components/Badge.astro";
 import LinkedInIcon from "@/components/icons/LinkedIn.astro";
 import MailIcon from "@/components/icons/Mail.astro";
 import SocialPill from "@/components/SocialPill.astro";
+import FileIcon from "@/components/icons/File.astro";
 ---
 
 <div class="max-w-3xl">
@@ -38,6 +38,10 @@ import SocialPill from "@/components/SocialPill.astro";
     <SocialPill href="https://linkedin.com/in/roberto-maclean">
       <LinkedInIcon class="size-4" />
       LinkedIn
+    </SocialPill>
+    <SocialPill href="./files/robertoMacleanCV.pdf" download="robertoMacleanCV">
+      <FileIcon class="size-4" />
+      Currículum
     </SocialPill>
   </nav>
 </div>
