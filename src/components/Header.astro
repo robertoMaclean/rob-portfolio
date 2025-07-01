@@ -1,24 +1,29 @@
 ---
 import ThemeToggle from "@/components/ThemeToggle.astro";
+import LanguageToggle from "@/components/LanguageToggle.astro";
 
 const navItems = [
   {
-    title: "Inicio",
+    titleEs: "Inicio",
+    titleEn: "Home", 
     label: "inicio",
     url: "/#inicio",
   },
   {
-    title: "Experiencia",
+    titleEs: "Experiencia",
+    titleEn: "Experience",
     label: "experiencia",
     url: "/#experiencia",
   },
   {
-    title: "Proyectos",
-    label: "proyectos",
+    titleEs: "Proyectos",
+    titleEn: "Projects",
+    label: "proyectos", 
     url: "/#proyectos",
   },
   {
-    title: "Sobre mí",
+    titleEs: "Sobre mí",
+    titleEn: "About me",
     label: "sobre-mi",
     url: "/#sobre-mi",
   },
@@ -34,14 +39,17 @@ const navItems = [
     {
       navItems.map((link) => (
         <a
-          class="relative block px-2 py-2 transition hover:text-yellow-500 dark:hover:text-yellow-400"
+          class="nav-link relative block px-2 py-2 transition hover:text-yellow-500 dark:hover:text-yellow-400"
           aria-label={link.label}
           href={link.url}
+          data-title-es={link.titleEs}
+          data-title-en={link.titleEn}
         >
-          {link.title}
+          {link.titleEs}
         </a>
       ))
     }
+    <LanguageToggle />
     <ThemeToggle />
   </nav>
 </header>
@@ -85,6 +93,27 @@ const navItems = [
         });
       }
     };
+
+    // Handle language changes
+    const updateNavLanguage = (language: string) => {
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach((link) => {
+        const titleKey = language === 'es' ? 'data-title-es' : 'data-title-en';
+        const title = link.getAttribute(titleKey);
+        if (title) {
+          link.textContent = title;
+        }
+      });
+    };
+
+    // Listen for language changes
+    document.addEventListener('languageChanged', (event: any) => {
+      updateNavLanguage(event.detail.language);
+    });
+
+    // Initialize with current language
+    const currentLanguage = localStorage.getItem('language') || 'es';
+    updateNavLanguage(currentLanguage);
   });
 </script>
 

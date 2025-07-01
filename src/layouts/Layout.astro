@@ -17,11 +17,11 @@ const { description, title } = Astro.props;
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
+    <meta name="description" content={description} id="page-description" data-description-es="Portfolio profesional de Roberto MacLean, ingeniero de software especializado en desarrollo web moderno." data-description-en="Professional portfolio of Roberto MacLean, software engineer specialized in modern web development." />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title id="page-title" data-title-es="Portfolio de Rob - Ingeniero de Software con +5 años de experiencia." data-title-en="Rob's Portfolio - Software Engineer with +5 years of experience.">{title}</title>
     <ViewTransitions />
   </head>
 

@@ -12,7 +12,7 @@ import AboutMe from "@/components/AboutMe.astro";
 
 <Layout
   title="Portfolio de Rob - Ingeniero de Software con +5 años de experiencia."
-  description=""
+  description="Portfolio profesional de Roberto MacLean, ingeniero de software especializado en desarrollo web moderno."
 >
   <main class="px-4">
     <SectionContainer id="inicio" class="py-16 md:py-36">
@@ -21,7 +21,9 @@ import AboutMe from "@/components/AboutMe.astro";
     <div class="space-y-24">
       <SectionContainer id="experiencia">
         <h2
-          class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
+          class="section-title flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
+          data-text-es="Experiencia laboral"
+          data-text-en="Work Experience"
         >
           <Briefcase class="size-8" />
           Experiencia laboral
@@ -31,7 +33,9 @@ import AboutMe from "@/components/AboutMe.astro";
 
       <SectionContainer id="proyectos">
         <h2
-          class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
+          class="section-title flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
+          data-text-es="Proyectos"
+          data-text-en="Projects"
         >
           <CodeIcon class="size-7" />
           Proyectos
@@ -41,7 +45,9 @@ import AboutMe from "@/components/AboutMe.astro";
 
       <SectionContainer id="sobre-mi">
         <h2
-          class="flex items-center mb-6 text-3xl font-semibold gap-x-8 text-black/80 dark:text-white"
+          class="section-title flex items-center mb-6 text-3xl font-semibold gap-x-8 text-black/80 dark:text-white"
+          data-text-es="Sobre mí"
+          data-text-en="About me"
         >
           <ProfileCheckIcon class="size-8" />
           Sobre mí
@@ -51,3 +57,109 @@ import AboutMe from "@/components/AboutMe.astro";
     </div>
   </main>
 </Layout>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    // Handle language changes for section titles
+    const updateSectionTitles = (language: string) => {
+      const sectionTitles = document.querySelectorAll('.section-title');
+      sectionTitles.forEach((title) => {
+        const textKey = language === 'es' ? 'data-text-es' : 'data-text-en';
+        const text = title.getAttribute(textKey);
+        if (text) {
+          // Update only the text node, preserve the icon
+          const textNode = title.childNodes[title.childNodes.length - 1];
+          if (textNode && textNode.nodeType === Node.TEXT_NODE) {
+            textNode.textContent = text;
+          }
+        }
+      });
+    };
+
+    // Handle Hero subtitle updates
+    const updateHeroSubtitle = (language: string) => {
+      const heroSubtitle = document.querySelector('.hero-subtitle');
+      if (heroSubtitle) {
+        const roleKey = language === 'es' ? 'data-role-es' : 'data-role-en';
+        const locationKey = language === 'es' ? 'data-location-es' : 'data-location-en';
+        const role = heroSubtitle.getAttribute(roleKey);
+        const location = heroSubtitle.getAttribute(locationKey);
+        
+        if (role && location) {
+          heroSubtitle.innerHTML = `<strong>${role}</strong> ${location}`;
+        }
+      }
+    };
+
+    // Handle all translatable text elements
+    const updateTranslatableText = (language: string) => {
+      const translatableElements = document.querySelectorAll('.translatable-text');
+      translatableElements.forEach((element) => {
+        const textKey = language === 'es' ? 'data-text-es' : 'data-text-en';
+        const text = element.getAttribute(textKey);
+        if (text) {
+          element.textContent = text;
+        }
+      });
+    };
+
+    // Handle Theme Toggle text
+    const updateThemeToggleText = (language: string) => {
+      const themeToggleText = document.querySelector('.theme-toggle-text');
+      if (themeToggleText) {
+        const textKey = language === 'es' ? 'data-text-es' : 'data-text-en';
+        const text = themeToggleText.getAttribute(textKey);
+        if (text) {
+          themeToggleText.textContent = text;
+        }
+      }
+    };
+
+    // Handle document language attribute
+    const updateDocumentLanguage = (language: string) => {
+      document.documentElement.lang = language;
+    };
+
+    // Handle page title and description
+    const updatePageMeta = (language: string) => {
+      const pageTitle = document.getElementById('page-title');
+      const pageDescription = document.getElementById('page-description');
+      
+      if (pageTitle) {
+        const titleKey = language === 'es' ? 'data-title-es' : 'data-title-en';
+        const title = pageTitle.getAttribute(titleKey);
+        if (title) {
+          pageTitle.textContent = title;
+          document.title = title;
+        }
+      }
+      
+      if (pageDescription) {
+        const descriptionKey = language === 'es' ? 'data-description-es' : 'data-description-en';
+        const description = pageDescription.getAttribute(descriptionKey);
+        if (description) {
+          pageDescription.setAttribute('content', description);
+        }
+      }
+    };
+
+    // Main update function
+    const updateAllTranslations = (language: string) => {
+      updateSectionTitles(language);
+      updateHeroSubtitle(language);
+      updateTranslatableText(language);
+      updateThemeToggleText(language);
+      updateDocumentLanguage(language);
+      updatePageMeta(language);
+    };
+
+    // Listen for language changes
+    document.addEventListener('languageChanged', (event: any) => {
+      updateAllTranslations(event.detail.language);
+    });
+
+    // Initialize with current language
+    const currentLanguage = localStorage.getItem('language') || 'es';
+    updateAllTranslations(currentLanguage);
+  });
+</script>

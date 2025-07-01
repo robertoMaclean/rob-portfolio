@@ -55,35 +55,46 @@ const TAGS = {
 };
 const PROJECTS = [
   {
-    title: "Rob Web",
-    description:
+    titleEs: "Rob Web",
+    titleEn: "Rob Web",
+    descriptionEs:
       "Mi pagina personal con algunas de las cosas que me interesan.",
+    descriptionEn:
+      "My personal page with some of the things that interest me.",
     link: "https://rob-maclean.netlify.app",
     github: "https://github.com/robertoMaclean/rob-mac-web-front",
     image: "/projects/rob-page.webp",
     tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT],
   },
   {
-    title: "Currículum de Rob",
-    description: "Mi currículum con el historial de mis trabajos.",
+    titleEs: "Currículum de Rob",
+    titleEn: "Rob's Resume",
+    descriptionEs: "Mi currículum con el historial de mis trabajos.",
+    descriptionEn: "My resume with the history of my jobs.",
     link: "https://rob-resume.netlify.app",
     github: "https://github.com/robertoMaclean/resume",
     image: "/projects/rob-resume.webp",
     tags: [TAGS.ASTR],
   },
   {
-    title: "Blog de Rob",
-    description:
+    titleEs: "Blog de Rob",
+    titleEn: "Rob's Blog",
+    descriptionEs:
       "Este es mi blog personal que algún día rellenaré con información de mi interés.",
+    descriptionEn:
+      "This is my personal blog that someday I will fill with information of my interest.",
     link: "https://rob-blog.netlify.app",
     github: "https://github.com/robertoMaclean/robertoMaclean.github.io",
     image: "/projects/rob-blog.webp",
     tags: [TAGS.JEKYLL],
   },
   {
-    title: "Gif Expert App",
-    description:
+    titleEs: "Gif Expert App",
+    titleEn: "Gif Expert App",
+    descriptionEs:
       "Una pagína para buscar Gifs realizada durante el curso de React de Fernando Herrera.",
+    descriptionEn:
+      "A page to search for Gifs made during Fernando Herrera's React course.",
     link: "https://gif-fernando-herrera-course.netlify.app",
     github: "https://github.com/robertoMaclean/resume",
     image: "/projects/gif-expert.webp",
@@ -94,7 +105,7 @@ const PROJECTS = [
 
 <div class="flex flex-col gap-y-16">
   {
-    PROJECTS.map(({ image, title, description, tags, link, github }) => (
+    PROJECTS.map(({ image, titleEs, titleEn, descriptionEs, descriptionEn, tags, link, github }) => (
       <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
         <div class="w-full md:w-1/2">
           <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
@@ -108,8 +119,8 @@ const PROJECTS = [
         </div>
 
         <div class="w-full md:w-1/2 md:max-w-lg">
-          <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
-            {title}
+          <h3 class="translatable-text text-2xl font-bold text-gray-800 dark:text-gray-100" data-text-es={titleEs} data-text-en={titleEn}>
+            {titleEs}
           </h3>
           <div class="flex flex-wrap mt-2">
             <ul class="flex flex-row mb-2 gap-x-2">
@@ -125,20 +136,20 @@ const PROJECTS = [
               ))}
             </ul>
 
-            <div class="mt-2 text-gray-700 dark:text-gray-400">
-              {description}
+            <div class="translatable-text mt-2 text-gray-700 dark:text-gray-400" data-text-es={descriptionEs} data-text-en={descriptionEn}>
+              {descriptionEs}
             </div>
             <footer class="flex items-end justify-start mt-4 gap-x-4">
               {github && (
                 <LinkButton href={github} target="_blank">
                   <GitHub class="size-6" />
-                  Code
+                  <span class="translatable-text" data-text-es="Código" data-text-en="Code">Código</span>
                 </LinkButton>
               )}
               {link && (
                 <LinkButton href={link}>
                   <Link class="size-4" />
-                  Preview
+                  <span class="translatable-text" data-text-es="Vista previa" data-text-en="Preview">Vista previa</span>
                 </LinkButton>
               )}
             </footer>

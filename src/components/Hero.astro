@@ -18,7 +18,11 @@ import FileIcon from "@/components/icons/File.astro";
         >
       </h1>
       <h2
-        class="text-2xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
+        class="hero-subtitle text-2xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
+        data-role-es="Ingeniero de Software"
+        data-role-en="Software Engineer"
+        data-location-es="de Viña del Mar, Chile."
+        data-location-en="from Viña del Mar, Chile."
       >
         <strong>Ingeniero de Software</strong> de Viña del Mar, Chile.
       </h2>
@@ -33,7 +37,7 @@ import FileIcon from "@/components/icons/File.astro";
   <nav class="flex flex-wrap gap-4 mt-8">
     <SocialPill href="mailto:r.maclean.m@gmail.com">
       <MailIcon class="size-4" />
-      Contáctame
+      <span class="translatable-text" data-text-es="Contáctame" data-text-en="Contact me">Contáctame</span>
     </SocialPill>
     <SocialPill href="https://linkedin.com/in/roberto-maclean">
       <LinkedInIcon class="size-4" />
@@ -41,7 +45,7 @@ import FileIcon from "@/components/icons/File.astro";
     </SocialPill>
     <SocialPill href="./files/robertoMacleanCV.pdf" download="robertoMacleanCV">
       <FileIcon class="size-4" />
-      Currículum
+      <span class="translatable-text" data-text-es="Currículum" data-text-en="Resume">Currículum</span>
     </SocialPill>
   </nav>
 </div>
