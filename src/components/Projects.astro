@@ -135,25 +135,26 @@ const PROJECTS = [
                 </li>
               ))}
             </ul>
-
-            <div class="translatable-text mt-2 text-gray-700 dark:text-gray-400" data-text-es={descriptionEs} data-text-en={descriptionEn}>
-              {descriptionEs}
-            </div>
-            <footer class="flex items-end justify-start mt-4 gap-x-4">
-              {github && (
-                <LinkButton href={github} target="_blank">
-                  <GitHub class="size-6" />
-                  <span class="translatable-text" data-text-es="Código" data-text-en="Code">Código</span>
-                </LinkButton>
-              )}
-              {link && (
-                <LinkButton href={link}>
-                  <Link class="size-4" />
-                  <span class="translatable-text" data-text-es="Vista previa" data-text-en="Preview">Vista previa</span>
-                </LinkButton>
-              )}
-            </footer>
           </div>
+          
+          <div class="translatable-text mt-2 text-gray-700 dark:text-gray-400" data-text-es={descriptionEs} data-text-en={descriptionEn}>
+            {descriptionEs}
+          </div>
+          
+          <footer class="flex items-end justify-start mt-4 gap-x-4">
+            {github && (
+              <LinkButton href={github} target="_blank">
+                <GitHub class="size-6" />
+                <span class="translatable-text" data-text-es="Código" data-text-en="Code">Código</span>
+              </LinkButton>
+            )}
+            {link && (
+              <LinkButton href={link}>
+                <Link class="size-4" />
+                <span class="translatable-text" data-text-es="Vista previa" data-text-en="Preview">Vista previa</span>
+              </LinkButton>
+            )}
+          </footer>
         </div>
       </article>
     ))
