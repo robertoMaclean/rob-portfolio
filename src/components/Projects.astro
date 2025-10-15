@@ -10,6 +10,13 @@ import Javascript from "@/components/icons/Javascript.astro";
 import Jekyll from "@/components/icons/Jekyll.astro";
 import Link from "@/components/icons/Link.astro";
 import LinkButton from "@/components/LinkButton.astro";
+import type { translations } from "@/utils/translations";
+
+interface Props {
+  projects: typeof translations.es.projects;
+}
+
+const { projects } = Astro.props;
 
 const TAGS = {
   NEXT: {
@@ -53,48 +60,35 @@ const TAGS = {
     icon: React,
   },
 };
+
 const PROJECTS = [
   {
-    titleEs: "Rob Web",
-    titleEn: "Rob Web",
-    descriptionEs:
-      "Mi pagina personal con algunas de las cosas que me interesan.",
-    descriptionEn:
-      "My personal page with some of the things that interest me.",
+    title: projects.items.robWeb.title,
+    description: projects.items.robWeb.description,
     link: "https://rob-maclean.netlify.app",
     github: "https://github.com/robertoMaclean/rob-mac-web-front",
     image: "/projects/rob-page.webp",
     tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT],
   },
   {
-    titleEs: "Currículum de Rob",
-    titleEn: "Rob's Resume",
-    descriptionEs: "Mi currículum con el historial de mis trabajos.",
-    descriptionEn: "My resume with the history of my jobs.",
+    title: projects.items.robResume.title,
+    description: projects.items.robResume.description,
     link: "https://rob-resume.netlify.app",
     github: "https://github.com/robertoMaclean/resume",
     image: "/projects/rob-resume.webp",
     tags: [TAGS.ASTR],
   },
   {
-    titleEs: "Blog de Rob",
-    titleEn: "Rob's Blog",
-    descriptionEs:
-      "Este es mi blog personal que algún día rellenaré con información de mi interés.",
-    descriptionEn:
-      "This is my personal blog that someday I will fill with information of my interest.",
+    title: projects.items.robBlog.title,
+    description: projects.items.robBlog.description,
     link: "https://rob-blog.netlify.app",
     github: "https://github.com/robertoMaclean/robertoMaclean.github.io",
     image: "/projects/rob-blog.webp",
     tags: [TAGS.JEKYLL],
   },
   {
-    titleEs: "Gif Expert App",
-    titleEn: "Gif Expert App",
-    descriptionEs:
-      "Una pagína para buscar Gifs realizada durante el curso de React de Fernando Herrera.",
-    descriptionEn:
-      "A page to search for Gifs made during Fernando Herrera's React course.",
+    title: projects.items.gifExpert.title,
+    description: projects.items.gifExpert.description,
     link: "https://gif-fernando-herrera-course.netlify.app",
     github: "https://github.com/robertoMaclean/resume",
     image: "/projects/gif-expert.webp",
@@ -105,12 +99,12 @@ const PROJECTS = [
 
 <div class="flex flex-col gap-y-16">
   {
-    PROJECTS.map(({ image, titleEs, titleEn, descriptionEs, descriptionEn, tags, link, github }) => (
+    PROJECTS.map(({ image, title, description, tags, link, github }) => (
       <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
         <div class="w-full md:w-1/2">
           <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
             <img
-              alt=""
+              alt={title}
               class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
               loading="lazy"
               src={image}
@@ -119,16 +113,14 @@ const PROJECTS = [
         </div>
 
         <div class="w-full md:w-1/2 md:max-w-lg">
-          <h3 class="translatable-text text-2xl font-bold text-gray-800 dark:text-gray-100" data-text-es={titleEs} data-text-en={titleEn}>
-            {titleEs}
+          <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+            {title}
           </h3>
           <div class="flex flex-wrap mt-2">
             <ul class="flex flex-row mb-2 gap-x-2">
               {tags.map((tag) => (
                 <li>
-                  <span
-                    class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
-                  >
+                  <span class="flex gap-x-2 rounded-full text-xs py-1 px-2">
                     <tag.icon class="size-4" />
                     {tag.name}
                   </span>
@@ -137,21 +129,21 @@ const PROJECTS = [
             </ul>
           </div>
           
-          <div class="translatable-text mt-2 text-gray-700 dark:text-gray-400" data-text-es={descriptionEs} data-text-en={descriptionEn}>
-            {descriptionEs}
+          <div class="mt-2 text-gray-700 dark:text-gray-400">
+            {description}
           </div>
           
           <footer class="flex items-end justify-start mt-4 gap-x-4">
             {github && (
               <LinkButton href={github} target="_blank">
                 <GitHub class="size-6" />
-                <span class="translatable-text" data-text-es="Código" data-text-en="Code">Código</span>
+                {projects.buttons.code}
               </LinkButton>
             )}
             {link && (
               <LinkButton href={link}>
                 <Link class="size-4" />
-                <span class="translatable-text" data-text-es="Vista previa" data-text-en="Preview">Vista previa</span>
+                {projects.buttons.preview}
               </LinkButton>
             )}
           </footer>

@@ -1,60 +1,16 @@
 ---
+const { pathname } = Astro.url;
+const isEnglish = pathname.startsWith("/en");
+const targetLang = isEnglish ? "es" : "en";
+const targetPath = targetLang === "es" ? "/" : "/en";
 ---
 
 <div class="relative ml-1 mr-1">
-  <button
-    id="language-toggle-btn"
+  <a
+    href={targetPath}
     class="appearance-none border-none flex hover:scale-125 transition items-center gap-1 px-2 py-1 rounded-md text-xs font-medium bg-gray-100/50 dark:bg-gray-800/50 hover:bg-gray-200/50 dark:hover:bg-gray-700/50"
   >
     <span class="sr-only">Change language</span>
-    <span id="current-language" class="text-gray-700 dark:text-gray-300">ES</span>
-  </button>
+    <span class="text-gray-700 dark:text-gray-300">{targetLang.toUpperCase()}</span>
+  </a>
 </div>
-
-<script is:inline>
-  const getLanguagePreference = () => {
-    if (typeof localStorage !== "undefined") {
-      return localStorage.getItem("language") ?? "es";
-    }
-    return "es";
-  };
-
-  const updateLanguage = () => {
-    const languagePreference = getLanguagePreference();
-    const currentLanguageSpan = document.getElementById("current-language");
-    
-    if (currentLanguageSpan) {
-      currentLanguageSpan.textContent = languagePreference.toUpperCase();
-    }
-
-    // Update document language attribute
-    document.documentElement.lang = languagePreference;
-
-    // Dispatch custom event for other components to listen to
-    document.dispatchEvent(new CustomEvent("languageChanged", { 
-      detail: { language: languagePreference } 
-    }));
-  };
-
-  // Initialize language on page load
-  document.addEventListener("astro:page-load", () => {
-    updateLanguage();
-  });
-
-  // Handle language toggle click
-  document.addEventListener("astro:page-load", () => {
-    const toggleBtn = document.getElementById("language-toggle-btn");
-    if (toggleBtn) {
-      toggleBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const current = getLanguagePreference();
-        const newLanguage = current === "es" ? "en" : "es";
-        localStorage.setItem("language", newLanguage);
-        updateLanguage();
-      });
-    }
-  });
-
-  // Initial update
-  updateLanguage();
-</script>

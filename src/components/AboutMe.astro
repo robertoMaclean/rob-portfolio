@@ -1,5 +1,13 @@
 ---
+import type { translations } from "@/utils/translations";
+
 const personalImageAlt = "Roberto Mac lean";
+
+interface Props {
+  aboutMe: typeof translations.es.aboutMe;
+}
+
+const { aboutMe } = Astro.props;
 ---
 
 <article
@@ -8,22 +16,11 @@ const personalImageAlt = "Roberto Mac lean";
   <div
     class="[&>p]:mb-4 [&>p>strong]:text-yellow-500 dark:[&>p>strong]:text-yellow-100 [&>p>strong]:font-normal [&>p>strong]:font-mono text-pretty order-2 md:order-1"
   >
-    <p class="translatable-text" 
-       data-text-es="Me llamo Roberto Mac lean mis amigos me llaman Rob. Soy Ingeniero Civil Informático y estudié en la Universidad de Valparaíso. Actualmente estoy trabajando como Ingeniero de Software para una empresa de Outsourcing."
-       data-text-en="My name is Roberto Mac lean, my friends call me Rob. I am a Computer Engineer and I studied at the Universidad de Valparaíso. I am currently working as a Software Engineer for an Outsourcing company.">
-      Me llamo Roberto Mac lean mis amigos me llaman Rob. Soy Ingeniero Civil
-      Informático y estudié en la Universidad de Valparaíso. Actualmente estoy <strong
-        >trabajando como Ingeniero de Software para una empresa de Outsourcing</strong
-      >.
+    <p>
+      {aboutMe.paragraph1}
     </p>
-    <p class="translatable-text"
-       data-text-es="En mis tiempos libres me gusta investigar sobre tecnología, programar, hacer ejercicio y reflexionar sobre la vida escuchando buena música. Mi Objetivo es aportar con mis conocimiento en los equipos de desarrollo para crear aplicaciones."
-       data-text-en="In my free time I like to research technology, programming, exercise and reflect on life while listening to good music. My goal is to contribute with my knowledge in development teams to create applications.">
-      En mis tiempos libres me gusta <strong
-        >investigar sobre tecnología, programar, hacer ejercicio y reflexionar
-        sobre la vida escuchando buena música</strong
-      >. Mi Objetivo es aportar con mis conocimiento en los equipos de
-      desarrollo para crear aplicaciones.
+    <p>
+      {aboutMe.paragraph2}
     </p>
   </div>
 

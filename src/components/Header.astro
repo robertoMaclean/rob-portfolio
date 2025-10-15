@@ -1,29 +1,29 @@
 ---
 import ThemeToggle from "@/components/ThemeToggle.astro";
 import LanguageToggle from "@/components/LanguageToggle.astro";
+import { translations, type Language } from "@/utils/translations.ts";
+
+const lang = Astro.currentLocale as Language;
+const t = translations[lang];
 
 const navItems = [
   {
-    titleEs: "Inicio",
-    titleEn: "Home", 
+    title: t.nav.home,
     label: "inicio",
     url: "/#inicio",
   },
   {
-    titleEs: "Experiencia",
-    titleEn: "Experience",
+    title: t.nav.experience,
     label: "experiencia",
     url: "/#experiencia",
   },
   {
-    titleEs: "Proyectos",
-    titleEn: "Projects",
-    label: "proyectos", 
+    title: t.nav.projects,
+    label: "proyectos",
     url: "/#proyectos",
   },
   {
-    titleEs: "Sobre mí",
-    titleEn: "About me",
+    title: t.nav.about,
     label: "sobre-mi",
     url: "/#sobre-mi",
   },
@@ -39,13 +39,11 @@ const navItems = [
     {
       navItems.map((link) => (
         <a
-          class="nav-link relative block px-2 py-2 transition hover:text-yellow-500 dark:hover:text-yellow-400"
+          class="relative block px-2 py-2 transition hover:text-yellow-500 dark:hover:text-yellow-400"
           aria-label={link.label}
           href={link.url}
-          data-title-es={link.titleEs}
-          data-title-en={link.titleEn}
         >
-          {link.titleEs}
+          {link.title}
         </a>
       ))
     }
@@ -93,27 +91,6 @@ const navItems = [
         });
       }
     };
-
-    // Handle language changes
-    const updateNavLanguage = (language: string) => {
-      const navLinks = document.querySelectorAll('.nav-link');
-      navLinks.forEach((link) => {
-        const titleKey = language === 'es' ? 'data-title-es' : 'data-title-en';
-        const title = link.getAttribute(titleKey);
-        if (title) {
-          link.textContent = title;
-        }
-      });
-    };
-
-    // Listen for language changes
-    document.addEventListener('languageChanged', (event: any) => {
-      updateNavLanguage(event.detail.language);
-    });
-
-    // Initialize with current language
-    const currentLanguage = localStorage.getItem('language') || 'es';
-    updateNavLanguage(currentLanguage);
   });
 </script>
 

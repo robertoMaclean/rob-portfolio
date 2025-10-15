@@ -1,46 +1,31 @@
 ---
 import ExperienceItem from "./ExperienceItem.astro";
+import type { translations } from "@/utils/translations";
+
+interface Props {
+  experience: typeof translations.es.experience;
+}
+
+const { experience } = Astro.props;
+
 const EXPERIENCIE = [
   {
-    dateEs: "Junio 2022 - Actualidad",
-    dateEn: "June 2022 - Present",
-    titleEs: "Ingeniero de Software",
-    titleEn: "Software Engineer",
-    company: "WITI",
-    descriptionEs:
-      `Diseño e implementación de microservicios backend para optimizar los procesos de despacho a domicilio, 
-      reduciendo la latencia y mejorando la eficiencia operativa. Desarrollé aplicaciones escalables 
-      utilizando Java Spring Boot, Python (Serverless) y NestJS, desplegadas con Docker y Kubernetes sobre AWS. 
-      Administré bases de datos PostgreSQL, MySQL, Oracle y MongoDB, e integré flujos ETL automatizados mediante Apache Airflow. 
-      Además, optimicé el rendimiento en servicios críticos, logrando una significativa reducción en los tiempos de respuesta.`,
-    descriptionEn:
-      `Design and implementation of backend microservices to optimize home delivery processes, 
-      reducing latency and improving operational efficiency. I developed scalable applications 
-      using Java Spring Boot, Python (Serverless), and NestJS, deployed with Docker and Kubernetes on AWS. 
-      I managed PostgreSQL, MySQL, Oracle, and MongoDB databases, and integrated automated ETL workflows using Apache Airflow. 
-      Additionally, I optimized performance in critical services, achieving a significant reduction in response times.`,
+    date: experience.dates.current,
+    title: experience.positions.softwareEngineer,
+    company: experience.companies.witi,
+    description: experience.descriptions.witi,
   },
   {
-    dateEs: "Febrero 2020 - Mayo 2022",
-    dateEn: "February 2020 - May 2022",
-    titleEs: "Ingeniero de Software",
-    titleEn: "Software Engineer",
-    company: "Bice Vida",
-    descriptionEs:
-      "Desarrollo de micro servicios tales como envíos de correos electrónicos utilizando templates, procesos de ETL, gestión de solicitudes de servicio, validación para proceso de entrega de créditos hipotecarios, aplicaciones de backoffice y otros.",
-    descriptionEn:
-      "Development of microservices such as email sending using templates, ETL processes, service request management, validation for mortgage loan delivery processes, backoffice applications, and others.",
+    date: experience.dates.bice,
+    title: experience.positions.softwareEngineer,
+    company: experience.companies.bice,
+    description: experience.descriptions.bice,
   },
   {
-    dateEs: "Febrero 2018 - Enero 2020",
-    dateEn: "February 2018 - January 2020",
-    titleEs: "Ingeniero de Software",
-    titleEn: "Software Engineer",
-    company: "Universidad de Valparaíso",
-    descriptionEs:
-      "Desarrollo de una aplicación web para el Registro Nacional del Cáncer. Encargado de desarrollar la lógica para la carga de formularios, seguridad mediante JWT, perfiles y gestión de usuarios, mediante el uso de Java/Spring-boot. También, a cargo de desarrollar el Front-end de la aplicación mediante Angular.",
-    descriptionEn:
-      "Development of a web application for the National Cancer Registry. Responsible for developing the logic for form loading, JWT security, profiles and user management, using Java/Spring-boot. Also in charge of developing the Front-end of the application using Angular.",
+    date: experience.dates.uv,
+    title: experience.positions.softwareEngineer,
+    company: experience.companies.uv,
+    description: experience.descriptions.uv,
   },
 ];
 ---

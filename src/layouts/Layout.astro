@@ -8,20 +8,21 @@ import { ViewTransitions } from "astro:transitions";
 interface Props {
   title: string;
   description: string;
+  lang: string;
 }
 
-const { description, title } = Astro.props;
+const { description, title, lang } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} id="page-description" data-description-es="Portfolio profesional de Roberto MacLean, ingeniero de software especializado en desarrollo web moderno." data-description-en="Professional portfolio of Roberto MacLean, software engineer specialized in modern web development." />
+    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title id="page-title" data-title-es="Portfolio de Rob - Ingeniero de Software con +5 años de experiencia." data-title-en="Rob's Portfolio - Software Engineer with +5 years of experience.">{title}</title>
+    <title>{title}</title>
     <ViewTransitions />
   </head>
 
