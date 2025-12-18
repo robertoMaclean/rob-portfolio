@@ -1,6 +1,5 @@
 ---
 import ThemeToggle from "@/components/ThemeToggle.astro";
-import LanguageToggle from "@/components/LanguageToggle.astro";
 import { translations, type Language } from "@/utils/translations.ts";
 
 const lang = Astro.currentLocale as Language;
@@ -47,7 +46,6 @@ const navItems = [
         </a>
       ))
     }
-    <LanguageToggle />
     <ThemeToggle />
   </nav>
 </header>
